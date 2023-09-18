@@ -9,6 +9,6 @@ request.get(`${url}${movieId}`, (error, response, body) => {
     console.error(error);
   } else {
     const data = JSON.parse(body);
-    console.log(data);
+    console.log(data.title);
   }
 });
