@@ -8,16 +8,16 @@ request.get(url, (error, response, body) => {
     console.error(error);
   } else {
     const data = JSON.parse(body);
-    const new_dict = {};
-    for (item of data) {
+    const newDict = {};
+    for (const item of data) {
       if (item.completed === true) {
-        if (!new_dict[item.userId]) {
-          new_dict[item.userId] = 1;
+        if (!newDict[item.userId]) {
+          newDict[item.userId] = 1;
         } else {
-          new_dict[item.userId] = new_dict[item.userId] + 1;
+          newDict[item.userId] = newDict[item.userId] + 1;
         }
       }
     }
-    console.log(new_dict);
+    console.log(newDict);
   }
 });
