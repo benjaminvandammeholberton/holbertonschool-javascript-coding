@@ -38,6 +38,7 @@ Tommy,Schoul,32,SWE
 Katie,Shirou,21,CS
 ```
 &nbsp;
+
 ### ```package.json```
 ```
 {
@@ -71,9 +72,10 @@ Katie,Shirou,21,CS
     "sinon": "^7.5.0"
   }
 }
+```
 &nbsp;
 
-```
+
 ### ```babel.config.js```
 ```
 module.exports = {
@@ -89,6 +91,7 @@ module.exports = {
   ],
 };
 ```
+&nbsp;
 
 ### ```.eslintrc.js```
 ```
@@ -134,6 +137,7 @@ module.exports = {
 
 ### and…
 Don’t forget to run ```$ npm install``` when you have the ```package.json```
+
 &nbsp;
 
 ## Tasks
