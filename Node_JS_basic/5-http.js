@@ -1,33 +1,20 @@
 const http = require('http');
 const countStudents = require('./3-read_file_async');
 
-const port = 1245;
-
-const server = http.createServer(async (req, res) => {
+const app = http.createServer(async (req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-
-  if (req.url === '/') {
-    res.end('Hello Holberton School!');
-  } else if (req.url === '/students') {
+  if (req.url === '/') res.end('Hello Holberton School!');
+  if (req.url === '/students') {
+    res.write('This is the list of our students\n');
     try {
-      const message = ['This is the list of our students'];
-
-      const messages = await countStudents('database.csv');
-
-      message.push(messages.join('\n'));
-      res.end(message.join('\n'));
+      const data = await countStudents(process.argv[2]);
+      res.end(`${data.join('\n')}`);
     } catch (error) {
-      console.error(error);
-      res.statusCode = 500;
-      res.end('Internal Server Error');
+      res.end(error.message);
     }
-  } else {
-    res.statusCode = 404;
-    res.end('Not Found');
   }
+  res.end();
 });
-
-server.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}/`);
-});
+app.listen(1245);
+module.exports = app;
