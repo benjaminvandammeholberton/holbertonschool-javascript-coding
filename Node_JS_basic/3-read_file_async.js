@@ -30,7 +30,7 @@ function countStudents(path) {
           console.log(message);
           messages.push(message);
         }
-        resolve(messages);
+        resolve();
       }
     });
   });
