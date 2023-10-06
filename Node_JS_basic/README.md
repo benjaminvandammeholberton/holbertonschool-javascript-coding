@@ -225,15 +225,16 @@ bob@dylan:~$
 ### 3. Reading a file asynchronously with Node JS
 *mandatory*
 
-Using the database database.csv (provided in project description), create a function countStudents in the file 3-read_file_async.js
+Using the database `database.csv` (provided in project description), create a function `countStudents` in the file 3-read_file_async.js
 
-Create a function named countStudents. It should accept a path in argument (same as in 2-read_file.js)
+Create a function named countStudents. It should accept a path in argument (same as in `2-read_file.js`)
 The script should attempt to read the database file asynchronously
 The function should return a Promise
-If the database is not available, it should throw an error with the text Cannot load the database
-If the database is available, it should log the following message to the console Number of students: NUMBER_OF_STUDENTS
-It should log the number of students in each field, and the list with the following format: Number of students in FIELD: 6. List: LIST_OF_FIRSTNAMES
+If the database is not available, it should throw an error with the text `Cannot load the database`
+If the database is available, it should log the following message to the console `Number of students: NUMBER_OF_STUDENTS`
+It should log the number of students in each field, and the list with the following format: `Number of students in FIELD: 6. List: LIST_OF_FIRSTNAMES`
 CSV file can contain empty lines (at the end) - and they are not a valid student!
+```
 bob@dylan:~$ cat 3-main_0.js
 const countStudents = require('./3-read_file_async');
 
@@ -268,37 +269,36 @@ Number of students in CS: 6. List: Johann, Arielle, Jonathan, Emmanuel, Guillaum
 Number of students in SWE: 4. List: Guillaume, Joseph, Paul, Tommy
 Done!
 bob@dylan:~$ 
-Tips:
+```
+**Tips:**
 
-Using asynchronous callbacks is the preferred way to write code in Node to avoid blocking threads
+- Using asynchronous callbacks is the preferred way to write code in Node to avoid blocking threads
+&nbsp;
 
-
-File: 3-read_file_async.js
-0/3 pts
+### 4. Create a small HTTP server using Node's HTTP module
 *mandatory*
 
 It should be assigned to the variable app and this one must be exported
 HTTP server should listen on port 1245
 Displays Hello Holberton School! in the page body for any endpoint as plain text
 In terminal 1:
-
+```
 bob@dylan:~$ node 4-http.js
 ...
+```
 In terminal 2:
-
+```
 bob@dylan:~$ curl localhost:1245 && echo ""
 Hello Holberton School!
 bob@dylan:~$ 
 bob@dylan:~$ curl localhost:1245/any_endpoint && echo ""
 Hello Holberton School!
 bob@dylan:~$ 
+```
+&nbsp;
 
-GitHub repository: holbertonschool-javascript-coding
-
-  
-0/3 pts
+### 5. Create a small HTTP server using Node's HTTP module
 *mandatory*
-
 
 It should be assigned to the variable app and this one must be exported
 

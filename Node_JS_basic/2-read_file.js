@@ -40,8 +40,8 @@ function countStudents(filePath) {
       console.log(
         `Number of students in ${fieldName}: ${
           listStudent.length
-        }. List: ${listStudent.join(', ')}`,
-      ); // Change to console.log
+        }. List: ${listStudent.join(', ')}`
+      );
     }
   } catch (err) {
     throw new Error('Cannot load the database');
