@@ -401,27 +401,29 @@ bob@dylan:~$
 ### 8. Organize a complex HTTP server using Express
 *mandatory*
 
-Obviously writing every part of a server within a single file is not sustainable. Let’s create a full server in a directory named full_server.
+Obviously writing every part of a server within a single file is not sustainable. Let’s create a full server in a directory named ```full_server```.
 
-Since you have used ES6 and Babel in the past projects, let’s use babel-node to allow to use ES6 functions like import or export.
+Since you have used ES6 and Babel in the past projects, let’s use ```babel-node``` to allow to use ES6 functions like ```import``` or ```export```.
 
-8.1 Organize the structure of the server
+#### 8.1 Organize the structure of the server
 
-Create 2 directories within:
-controllers
-routes
-Create a file full_server/utils.js, in the file create a function named readDatabase that accepts a file path as argument:
-It should read the database asynchronously
-It should return a promise
-When the file is not accessible, it should reject the promise with the error
-When the file can be read, it should return an object of arrays of the firstname of students per fields
-8.2 Write the App controller
+- Create 2 directories within:
+  - ```controllers```
+  - ```routes```
+- Create a file ```full_server/utils.js```, in the file create a function named ```readDatabase``` that accepts a file path as argument:
+  - It should read the database asynchronously
+  - It should return a promise
+  - When the file is not accessible, it should reject the promise with the error
+  - When the file can be read, it should return an object of arrays of the firstname of students per fields
 
-Inside the file full_server/controllers/AppController.js:
+#### 8.2 Write the App controller
 
-Create a class named AppController. Add a static method named getHomepage
-The method accepts request and response as argument. It returns a 200 status and the message Hello Holberton School!
-8.3 Write the Students controller
+Inside the file ```full_server/controllers/AppController.js```:
+
+- Create a class named ```AppController```. Add a static method named ```getHomepage```
+- The method accepts ```request``` and ```response``` as argument. It returns a 200 status and the message ```Hello Holberton School!```
+
+#### 8.3 Write the Students controller
 
 Inside the file full_server/controllers/StudentsController.js, create a class named StudentsController. Add two static methods:
 
@@ -456,16 +458,19 @@ It should use the port 1245
 
 If you are starting node from outside of the folder full_server, you will have to update the command dev by: nodemon --exec babel-node --presets babel-preset-env ./full_server/server.js ./database.csv
 
-Warning:
+**Warning:**
 
 Don’t forget to export your express app at the end of server.js (export default app;)
 The database filename is passed as argument of the server.js BUT, for testing purpose, you should retrieve this filename at the execution (when getAllStudents or getAllStudentsByMajor are called for example)
-In terminal 1:
-
+Terminal 1:
+```
 bob@dylan:~$ npm run dev
 ...
-In terminal 2:
+```
 
+Terminal 2:
+
+```
 bob@dylan:~$ curl localhost:1245 && echo ""
 Hello Holberton School!
 bob@dylan:~$ 
@@ -495,7 +500,8 @@ bob@dylan:~$ curl localhost:1245/students/French -vvv && echo ""
 * Connection #0 to host localhost left intact
 Major parameter must be CS or SWE
 bob@dylan:~$ 
-If you want to add test to validate your integration, you will need to add this file: .babelrc
+```
+If you want to add test to validate your integration, you will need to add this file: ```.babelrc```
 ```
 {
     "presets": [["env", {"exclude": ["transform-regenerator"]}]]
