@@ -40,7 +40,7 @@ function countStudents(filePath) {
       console.log(
         `Number of students in ${fieldName}: ${
           listStudent.length
-        }. List: ${listStudent.join(', ')}`
+        }. List: ${listStudent.join(', ')}`,
       );
     }
   } catch (err) {
