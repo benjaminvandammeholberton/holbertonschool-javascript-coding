@@ -16,7 +16,7 @@ function countStudents(path) {
         console.log(message);
         messages.push(message);
         const subjects = {};
-        for (const i in students) {
+        for (let i = 1; i < students.length; i++) {
           if (i !== 0) {
             if (!subjects[students[i][3]]) subjects[students[i][3]] = [];
             subjects[students[i][3]].push(students[i][0]);
