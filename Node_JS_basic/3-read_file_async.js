@@ -1,54 +1,37 @@
 const fs = require('fs');
 
-function countStudents(filePath) {
+function countStudents(path) {
   return new Promise((resolve, reject) => {
-    fs.readFile(filePath, 'utf8', (err, data) => {
-      if (err) {
-        console.error('Cannot load the database');
-        reject(err);
-        return;
-      }
-      const raws = data.split('\n');
-      const parsedData = [];
-
-      for (let i = 1; i < raws.length; i += 1) {
-        const row = raws[i].trim();
-        const columns = row.split(',');
-
-        const student = {
-          firstname: columns[0].trim(),
-          lastname: columns[1].trim(),
-          age: columns[2].trim(),
-          field: columns[3].trim(),
-        };
-        parsedData.push(student);
-      }
-      const numberOfStudents = parsedData.length;
-      console.log(`Number of students: ${numberOfStudents}`); // Change to console.log
-
-      const fieldsName = [];
-
-      for (let i = 0; i < parsedData.length; i += 1) {
-        const student = parsedData[i];
-        if (!fieldsName.includes(student.field)) {
-          fieldsName.push(student.field);
+    fs.readFile(path, 'utf8', (error, data) => {
+      if (error) {
+        reject(new Error('Cannot load the database'));
+      } else {
+        const messages = [];
+        let message;
+        const content = data.toString().split('\n');
+        let students = content.filter((item) => item);
+        students = students.map((item) => item.split(','));
+        const nStudents = students.length ? students.length - 1 : 0;
+        message = `Number of students: ${nStudents}`;
+        console.log(message);
+        messages.push(message);
+        const subjects = {};
+        for (const i in students) {
+          if (i !== 0) {
+            if (!subjects[students[i][3]]) subjects[students[i][3]] = [];
+            subjects[students[i][3]].push(students[i][0]);
+          }
         }
+        delete subjects.subject;
+        for (const key of Object.keys(subjects)) {
+          message = `Number of students in ${key}: ${
+            subjects[key].length
+          }. List: ${subjects[key].join(', ')}`;
+          console.log(message);
+          messages.push(message);
+        }
+        resolve(messages);
       }
-
-      const fieldDictionary = {};
-      for (let i = 0; i < fieldsName.length; i += 1) {
-        const fieldName = fieldsName[i];
-        const listStudent = parsedData
-          .filter((student) => student.field === fieldName)
-          .map((student) => student.firstname);
-        fieldDictionary[fieldName] = listStudent;
-        console.log(
-          `Number of students in ${fieldName}: ${
-            listStudent.length
-          }. List: ${listStudent.join(', ')}`,
-        );
-      }
-      resolve();
     });
   });
 }

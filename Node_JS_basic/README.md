@@ -282,6 +282,7 @@ bob@dylan:~$
 It should be assigned to the variable app and this one must be exported
 HTTP server should listen on port 1245
 Displays Hello Holberton School! in the page body for any endpoint as plain text
+
 In terminal 1:
 ```
 bob@dylan:~$ node 4-http.js
