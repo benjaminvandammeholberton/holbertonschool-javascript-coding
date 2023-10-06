@@ -279,9 +279,10 @@ bob@dylan:~$
 ### 4. Create a small HTTP server using Node's HTTP module
 *mandatory*
 
-It should be assigned to the variable app and this one must be exported
-HTTP server should listen on port 1245
-Displays Hello Holberton School! in the page body for any endpoint as plain text
+In a file named ```4-http.js```, create a small HTTP server using the ```http``` module:
+- It should be assigned to the variable ```app``` and this one must be exported
+- HTTP server should listen on port 1245
+- Displays ```Hello Holberton School```! in the page body for any endpoint as plain text
 
 In terminal 1:
 ```
@@ -301,19 +302,24 @@ bob@dylan:~$
 
 ### 5. Create a small HTTP server using Node's HTTP module
 *mandatory*
+In a file named 5-http.js, create a small HTTP server using the http module:
+- It should be assigned to the variable app and this one must be exported
+- HTTP server should listen on port 1245
+- It should return plain text
+- When the URL path is /, it should display Hello Holberton School! in the page body
+- When the URL path is /students, it should display This is the list of our students followed by the same content as the file 3-read_file_async.js (with and without the database) - the name of the database must be passed as argument of the file
+- CSV file can contain empty lines (at the end) - and they are not a valid student!
 
-It should be assigned to the variable app and this one must be exported
-
-
-
-When the URL path is /students, it should display This is the list of our students followed by the same content as the file 3-read_file_async.js (with and without the database) - the name of the database must be passed as argument of the file
-CSV file can contain empty lines (at the end) - and they are not a valid student!
 Terminal 1:
 
+```
 bob@dylan:~$ node 5-http.js database.csv
 ...
+```
+
 In terminal 2:
 
+```
 bob@dylan:~$ curl localhost:1245 && echo ""
 Hello Holberton School!
 bob@dylan:~$ 
@@ -323,11 +329,9 @@ Number of students: 10
 Number of students in CS: 6. List: Johann, Arielle, Jonathan, Emmanuel, Guillaume, Katie
 Number of students in SWE: 4. List: Guillaume, Joseph, Paul, Tommy
 bob@dylan:~$ 
+```
+&nbsp;
 
-GitHub repository: holbertonschool-javascript-coding
-Directory: Node_JS_basic
-
-0/4 pts
 ### 6. Create a small HTTP server using Express
 *mandatory*
 
