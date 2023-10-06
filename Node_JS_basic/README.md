@@ -318,7 +318,7 @@ bob@dylan:~$ node 5-http.js database.csv
 ...
 ```
 
-In terminal 2:
+Terminal 2:
 
 ```
 bob@dylan:~$ curl localhost:1245 && echo ""
@@ -341,13 +341,13 @@ Install Express and in a file named ```6-http_express.js```, create a small
 - It should be assigned to the variable ```app``` and this one must be exported
 - Displays ```Hello Holberton School!``` in the page body for the endpoint ```/```
 
-In terminal 1:
+Terminal 1:
 ```
 bob@dylan:~$ node 6-http_express.js
 ...
 ```
 
-In terminal 2:
+Terminal 2:
 ```
 bob@dylan:~$ curl localhost:1245 && echo ""
 Hello Holberton School!
@@ -370,17 +370,22 @@ bob@dylan:~$
 ### 7. Create a more complex HTTP server using Express
 *mandatory*
 
-In a file named 7-http_express.js, recreate the small HTTP server using Express:
-It should be assigned to the variable app and this one must be exported
+In a file named ```7-http_express.js```, recreate the small HTTP server using ```Express```:
+- It should be assigned to the variable app and this one must be exported
+- HTTP server should listen on port 1245
+- It should return plain text
+- When the URL path is ```/```, it should display ```Hello Holberton School!``` in the page body
+- When the URL path is ```/students```, it should display ```This is the list of our students``` followed by the same content as the file ```3-read_file_async.js``` (with and without the database) - the name of the database must be passed as argument of the file
+- CSV file can contain empty lines (at the end) - and they are not a valid student!
 
-It should return plain text
-When the URL path is /, it should display Hello Holberton School! in the page body
-CSV file can contain empty lines (at the end) - and they are not a valid student!
 Terminal 1:
-
+```
 bob@dylan:~$ node 7-http_express.js database.csv
+...
+```
 
-
+Terminal 2:
+```
 bob@dylan:~$ curl localhost:1245 && echo ""
 Hello Holberton School!
 bob@dylan:~$ 
@@ -390,30 +395,32 @@ Number of students: 10
 Number of students in CS: 6. List: Johann, Arielle, Jonathan, Emmanuel, Guillaume, Katie
 Number of students in SWE: 4. List: Guillaume, Joseph, Paul, Tommy
 bob@dylan:~$ 
-
-GitHub repository: holbertonschool-javascript-coding
-Directory: Node_JS_basic
-File: 7-http_express.js
+```
+&nbsp;
   
-
+### 8. Organize a complex HTTP server using Express
 *mandatory*
 
 Obviously writing every part of a server within a single file is not sustainable. Let’s create a full server in a directory named full_server.
 
 Since you have used ES6 and Babel in the past projects, let’s use babel-node to allow to use ES6 functions like import or export.
+
 8.1 Organize the structure of the server
 
-
+Create 2 directories within:
 controllers
 routes
+Create a file full_server/utils.js, in the file create a function named readDatabase that accepts a file path as argument:
 It should read the database asynchronously
 It should return a promise
 When the file is not accessible, it should reject the promise with the error
 When the file can be read, it should return an object of arrays of the firstname of students per fields
 8.2 Write the App controller
-Inside the file full_server/controllers/AppController.js:
-Create a class named AppController. Add a static method named getHomepage
 
+Inside the file full_server/controllers/AppController.js:
+
+Create a class named AppController. Add a static method named getHomepage
+The method accepts request and response as argument. It returns a 200 status and the message Hello Holberton School!
 8.3 Write the Students controller
 
 Inside the file full_server/controllers/StudentsController.js, create a class named StudentsController. Add two static methods:
@@ -489,17 +496,8 @@ bob@dylan:~$ curl localhost:1245/students/French -vvv && echo ""
 Major parameter must be CS or SWE
 bob@dylan:~$ 
 If you want to add test to validate your integration, you will need to add this file: .babelrc
-
-Click to show/hide file contents
-
-GitHub repository: holbertonschool-javascript-coding
-Directory: Node_JS_basic
-File: full_server/utils.js, full_server/controllers/AppController.js, full_server/controllers/StudentsController.js, full_server/routes/index.js, full_server/server.js
-  
-0/7 pts
-
-Your score will be updated as you progress.
-
-Please review all the tasks before you start the peer review.
-
-Copyright © 2023 Holberton Inc, All rights reserved.
+```
+{
+    "presets": [["env", {"exclude": ["transform-regenerator"]}]]
+}
+```
