@@ -1,5 +1,5 @@
 # NodeJS Basics
-
+![cover](/images/82692897e15d9f03256f.jpeg)
 ## Learning Objectives
 - run javascript using NodeJS
 - use NodeJS modules
