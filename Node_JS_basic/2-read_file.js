@@ -1,51 +1,26 @@
 const fs = require('fs');
 
-function countStudents(filePath) {
+const countStudents = (aPath) => {
   try {
-    const data = fs.readFileSync(filePath, 'utf8');
-    const raws = data.split('\n');
-    const parsedData = [];
-
-    for (let i = 1; i < raws.length; i += 1) {
-      const row = raws[i].trim();
-      const columns = row.split(',');
-
-      const student = {
-        firstname: columns[0].trim(),
-        lastname: columns[1].trim(),
-        age: columns[2].trim(),
-        field: columns[3].trim(),
-      };
-      parsedData.push(student);
+    let data = fs.readFileSync(aPath, 'utf8').toString().split('\n');
+    data = data.slice(1, data.length - 1);
+    console.log(`Number of students: ${data.length}`);
+    const subjects = {};
+    for (const row of data) {
+      const student = row.split(',');
+      if (!subjects[student[3]]) subjects[student[3]] = [];
+      subjects[student[3]].push(student[0]);
     }
-    const numberOfStudents = parsedData.length;
-    console.log(`Number of students: ${numberOfStudents}`); // Change to console.log
-
-    const fieldsName = [];
-
-    for (let i = 0; i < parsedData.length; i += 1) {
-      const student = parsedData[i];
-      if (!fieldsName.includes(student.field)) {
-        fieldsName.push(student.field);
-      }
+    for (const subject in subjects) {
+      if (subject)
+        console.log(
+          `Number of students in ${subject}: ${
+            subjects[subject].length
+          }. List: ${subjects[subject].join(', ')}`
+        );
     }
-
-    const fieldDictionary = {};
-    for (let i = 0; i < fieldsName.length; i += 1) {
-      const fieldName = fieldsName[i];
-      const listStudent = parsedData
-        .filter((student) => student.field === fieldName)
-        .map((student) => student.firstname);
-      fieldDictionary[fieldName] = listStudent;
-      console.log(
-        `Number of students in ${fieldName}: ${
-          listStudent.length
-        }. List: ${listStudent.join(', ')}`
-      );
-    }
-  } catch (err) {
+  } catch (error) {
     throw new Error('Cannot load the database');
   }
-}
-
+};
 module.exports = countStudents;
