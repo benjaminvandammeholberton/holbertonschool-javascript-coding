@@ -40,7 +40,7 @@ function countStudents(filePath) {
       process.stdout.write(
         `Number of students in ${fieldName}: ${
           listStudent.length
-        }. List: ${listStudent.join(', ')}\n`
+        }. List: ${listStudent.join(', ')}\n`,
       );
     }
   } catch (err) {
