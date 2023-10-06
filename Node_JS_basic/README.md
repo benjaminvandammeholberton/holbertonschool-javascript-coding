@@ -302,6 +302,7 @@ bob@dylan:~$
 
 ### 5. Create a small HTTP server using Node's HTTP module
 *mandatory*
+
 In a file named 5-http.js, create a small HTTP server using the http module:
 - It should be assigned to the variable app and this one must be exported
 - HTTP server should listen on port 1245
