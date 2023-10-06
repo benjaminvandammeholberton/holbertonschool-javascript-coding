@@ -19,7 +19,7 @@ function countStudents(filePath) {
       parsedData.push(student);
     }
     const numberOfStudents = parsedData.length;
-    console.log(`Number of students: ${numberOfStudents}`);
+    process.stdout.write(`Number of students: ${numberOfStudents}\n`);
 
     const fieldsName = [];
 
@@ -37,10 +37,10 @@ function countStudents(filePath) {
         .filter((student) => student.field === fieldName)
         .map((student) => student.firstname);
       fieldDictionary[fieldName] = listStudent;
-      console.log(
+      process.stdout.write(
         `Number of students in ${fieldName}: ${
           listStudent.length
-        }. List: ${listStudent.join(', ')}`,
+        }. List: ${listStudent.join(', ')}\n`
       );
     }
   } catch (err) {
