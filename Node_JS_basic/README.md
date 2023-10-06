@@ -37,6 +37,7 @@ Paul,Schneider,60,SWE
 Tommy,Schoul,32,SWE
 Katie,Shirou,21,CS
 ```
+&nbsp;
 ### ```package.json```
 ```
 {
@@ -70,6 +71,7 @@ Katie,Shirou,21,CS
     "sinon": "^7.5.0"
   }
 }
+&nbsp;
 
 ```
 ### ```babel.config.js```
@@ -128,9 +130,11 @@ module.exports = {
   ]
 };
 ```
+&nbsp;
 
 ### and…
 Don’t forget to run ```$ npm install``` when you have the ```package.json```
+&nbsp;
 
 ## Tasks
 ### 0. Executing basic javascript with Node JS
@@ -148,6 +152,7 @@ bob@dylan:~$ node 0-main.js
 Hello NodeJS!
 bob@dylan:~$
 ```
+&nbsp;
 
 ### 1. Using Process stdin
 *mandatory*
@@ -173,6 +178,7 @@ Your name is: John
 This important software is now closing
 bob@dylan:~$ 
 ```
+&nbsp;
 
 ### 2. Reading a file synchronously with Node JS
 *mandatory*
@@ -210,6 +216,7 @@ Number of students in CS: 6. List: Johann, Arielle, Jonathan, Emmanuel, Guillaum
 Number of students in SWE: 4. List: Guillaume, Joseph, Paul, Tommy
 bob@dylan:~$
 ```
+&nbsp;
 
 ### 3. Reading a file asynchronously with Node JS
 *mandatory*
