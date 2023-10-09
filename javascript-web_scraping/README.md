@@ -236,7 +236,7 @@ Lando Calrissian
 guillaume@ubuntu:~/$
 ```
 
-### 100-starwars_characters.js
+### 8. Right order
 
 _#advanced_
 
