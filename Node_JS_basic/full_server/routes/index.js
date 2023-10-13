@@ -1,9 +1,19 @@
-import router from './routes/index';
+import express from 'express';
+import AppController from '../controllers/AppController';
+import StudentController from '../controllers/StudentsController';
 
-const express = require('express');
+const router = express.Router();
 
-const app = express();
+router.get('/', (req, res) => {
+  AppController.getHomepage(req, res);
+});
 
-app.use('/', router).listen(1245);
+router.get('/students', (req, res) => {
+  StudentController.getAllStudents(req, res, process.argv[2]);
+});
 
-export default app;
+router.get('/students/:major', (req, res) => {
+  StudentController.getAllStudentsByMajor(req, res, process.argv[2]);
+});
+
+export default router;
